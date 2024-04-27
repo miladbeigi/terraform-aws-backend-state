@@ -10,7 +10,7 @@ resource "aws_kms_alias" "key-alias" {
 }
 
 resource "aws_s3_bucket" "terraform-state" {
-  bucket = "${var.bucket_name}-${var.env}"
+  bucket = var.bucket_name
 }
 
 resource "aws_s3_bucket_server_side_encryption_configuration" "terraform-state" {
@@ -52,7 +52,7 @@ resource "aws_s3_bucket_public_access_block" "block" {
 }
 
 resource "aws_dynamodb_table" "terraform-state" {
-  name           = var.dynamodb-prefix-table-name == "" ? "terraform-state-db-${var.env}" : "${var.dynamodb-prefix-table-name}-terraform-state-db-${var.env}"
+  name           = var.dynamodb-prefix-table-name == "" ? "terraform-state-db" : "${var.dynamodb-prefix-table-name}-terraform-state-db"
   read_capacity  = 20
   write_capacity = 20
   hash_key       = "LockID"
