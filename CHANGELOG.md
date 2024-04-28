@@ -1,3 +1,9 @@
+## v0.2.1 (2024-04-27)
+
+### Fix
+
+- **tf**: add provider version
+
 ## v0.2.0 (2024-04-27)
 
 ### Refactor
